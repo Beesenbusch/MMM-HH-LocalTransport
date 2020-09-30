@@ -22,6 +22,5 @@
   "homepage": "https://github.com/georg90/MMM-HH-LocalTransport#readme",
   "dependencies": {
     "unirest": "latest",
-    "node-forge": "latest"
     }
 }

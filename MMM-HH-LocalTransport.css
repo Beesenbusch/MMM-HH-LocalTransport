@@ -1,16 +1,20 @@
-.hhtransport {
-  font-size: 75%;
-  line-height: 65px;
-  display: inline-block;
-  -ms-transform: translate(0, -3px); /* IE 9 */
-  -webkit-transform: translate(0, -3px); /* Safari */
-  transform: translate(0, -3px);
+.hvvdeparture {
+    padding-right: 10px;
+    text-align: right;
 }
 
-.hhtransport table {
-    width: 400px;
+.hvvdelay {
+    color: #FF0000;
+    text-align: left;
 }
 
-.hhtransport .red {
-    color: #FF0000
+.hvvline {
+    padding: 0 10px;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.hvvdestination {
+    padding-left: 10px;
+    text-align: left;
 }
