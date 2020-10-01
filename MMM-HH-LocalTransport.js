@@ -75,46 +75,53 @@ Module.register("MMM-HH-LocalTransport",{
         }
 
 
-        var table = document.createElement("table");
-        table.className = "small";
+        // The "table" as a div
+        var divTable = document.createElement("div");
+        divTable.className = "hvvtable small";
+
+        // The "table body" as a div
+        var divTableBody = document.createElement("div");
+        divTableBody.className = "hvvtablebody";
+        divTable.appendChild(divTableBody);
 
         for (var t in this.trains) {
             var trains = this.trains[t];
-            var row = document.createElement("tr");
-            table.appendChild(row);
+            var divRow = document.createElement("div");
+            divRow.className = "hvvrow";
+            divTableBody.appendChild(divRow);
 
             // departure time cell
-            var depCell = document.createElement("td");
-            depCell.className = "hvvdeparture";
+            var divCellDep = document.createElement("div");
+            divCellDep.className = "hvvdeparture";
             if (trains.departureTimestamp == 0) {
-                depCell.innerHTML = "now";
+                divCellDep.innerHTML = "now";
             } else {
-                depCell.innerHTML = trains.departureTimestamp + " min";
+                divCellDep.innerHTML = trains.departureTimestamp + " min";
             }
-            row.appendChild(depCell);
+            divRow.appendChild(divCellDep);
 
             // possible delays cell
-            var delayCell = document.createElement("td");
-            delayCell.className = "hvvdelay";
+            var divCellDelay = document.createElement("div");
+            divCellDelay.className = "hvvdelay";
             if(trains.delay) {
-                delayCell.innerHTML = "+" + (trains.delay / 60);
+                divCellDelay.innerHTML = "+" + (trains.delay / 60);
             }
-            row.appendChild(delayCell);
+            divRow.appendChild(divCellDelay);
 
             // line name cell
-            var trainNameCell = document.createElement("td");
-            var trainIcon = document.createElement("IMG");
-            trainIcon.src = "https://www.geofox.de/icon_service/line?height=" + this.config.iconSize + "&lineKey=" + trains.id;
-            trainIcon.alt = trains.name;
-            trainNameCell.appendChild(trainIcon);
-            trainNameCell.className = "hvvline";
-            row.appendChild(trainNameCell);
+            var divCellLine = document.createElement("div");
+            var lineIcon = document.createElement("IMG");
+            lineIcon.src = "https://www.geofox.de/icon_service/line?height=" + this.config.iconSize + "&lineKey=" + trains.id;
+            lineIcon.alt = trains.name;
+            divCellLine.appendChild(lineIcon);
+            divCellLine.className = "hvvline";
+            divRow.appendChild(divCellLine);
 
             // line destination cell
-            var trainToCell = document.createElement("td");
-            trainToCell.innerHTML = trains.to;
-            trainToCell.className = "hvvdestination";
-            row.appendChild(trainToCell);
+            var divCellDest = document.createElement("div");
+            divCellDest.innerHTML = trains.to;
+            divCellDest.className = "hvvdestination";
+            divRow.appendChild(divCellDest);
 
             // handle fading
             if (this.config.fade && this.config.fadePoint < 1) {
@@ -125,11 +132,11 @@ Module.register("MMM-HH-LocalTransport",{
                 var steps = this.trains.length - startingPoint;
                 if (t >= startingPoint) {
                     var currentStep = t - startingPoint;
-                    row.style.opacity = 1 - (1 / steps * currentStep);
+                    divRow.style.opacity = 1 - (1 / steps * currentStep);
                 }
             }
         }
-        return table;
+        return divTable;
     },
 
     socketNotificationReceived: function(notification, payload) {

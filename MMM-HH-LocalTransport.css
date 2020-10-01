@@ -1,20 +1,41 @@
+.hvvtable {
+    display: table;
+    width: 100%;
+}
+
+.hvvtablebody {
+    display: table-row-group;
+}
+
+.hvvrow {
+    display: table-row;
+}
+
+.hvvrow div {
+    display: table-cell;
+    min-width: max-content;
+}
+
 .hvvdeparture {
     padding-right: 10px;
     text-align: right;
+    width: 50%;
 }
 
 .hvvdelay {
     color: #FF0000;
     text-align: left;
+    width: 1px;
 }
 
 .hvvline {
     padding: 0 10px;
     text-align: center;
-    vertical-align: bottom;
+    width: 1px;
 }
 
 .hvvdestination {
     padding-left: 10px;
     text-align: left;
+    width: 50%;
 }
