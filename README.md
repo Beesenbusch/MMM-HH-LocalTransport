@@ -2,20 +2,28 @@
 
 # Get API key
 
-You need to obtain your API key here: https://www.hvv.de/de/fahrplaene/abruf-fahrplaninfos/datenabruf
-by sending Hochbahn a mail (link at the bottom of the page)
+You need to obtain your API key by sending Hochbahn an email.
+Visit https://www.hvv.de/de/fahrplaene/abruf-fahrplaninfos/datenabruf and see the information at the bottom of the page.
 
 # Install
 
-1. Clone repository into `../modules/` inside your MagicMirror folder.
-2. Run `npm install` inside `../modules/MMM-HH-LocalTransport/` folder
-3. Run `node findStation.js apiKey apiUser stationName` to find out your Station ID.
-4. Add the module to the MagicMirror config
+1. Clone repository
+```
+cd modules
+git clone https://github.com/skuethe/MMM-HH-LocalTransport.git
+```
+2. Install dependencies
+```
+cd MMM-HH-LocalTransport/
+npm install
+```
+3. Find your specific Station ID by running `node findStation.js apiKey apiUser stationName`
+4. Add the module to your MagicMirror config
 ```
         {
             module: 'MMM-HH-LocalTransport',
             position: 'bottom_right',
-            header: 'Connections',
+            header: 'HVV - Connections',
             config: {
                 id: '', // Trainstation ID
                 apiKey: '', // Add your apiKey
@@ -25,7 +33,7 @@ by sending Hochbahn a mail (link at the bottom of the page)
         },
 ```
 # Screenshot
-![screenshot](https://cloud.githubusercontent.com/assets/6489464/16900320/11ec448a-4c22-11e6-8754-181862a52540.png)
+![screenshot](https://user-images.githubusercontent.com/56306041/94842874-32095580-041c-11eb-9e65-752763020420.png)
 
 
 # Further information
