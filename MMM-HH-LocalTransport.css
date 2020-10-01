@@ -14,12 +14,13 @@
 .hvvrow div {
     display: table-cell;
     min-width: max-content;
+    white-space: nowrap;
 }
 
 .hvvdeparture {
     padding-right: 10px;
     text-align: right;
-    width: 50%;
+    width: 1px;
 }
 
 .hvvdelay {
