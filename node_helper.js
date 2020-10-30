@@ -15,6 +15,7 @@ module.exports = NodeHelper.create({
 
     start: function () {
         this.started = false;
+        this.updateTimer = null;
     },
 
 
@@ -151,9 +152,11 @@ module.exports = NodeHelper.create({
         }
         var self = this;
         clearTimeout(this.updateTimer);
-        this.updateTimer = setTimeout(function() {
-            self.updateTimetable();
-        }, nextLoad);
+        if (this.started === true) {
+            this.updateTimer = setTimeout(function() {
+                self.updateTimetable();
+            }, nextLoad);
+        }
     },
 
 
@@ -164,12 +167,24 @@ module.exports = NodeHelper.create({
 
 
     socketNotificationReceived: function(notification, payload) {
-        const self = this;
-        if (notification === 'CONFIG' && this.started == false) {
+        console.info(this.name + " --- DEBUG --- socketNotification: " + notification);
+
+        if (notification === 'CONFIG' && this.started === false) {
             this.config = payload;
             this.started = true;
-            self.scheduleUpdate(this.config.initialLoadDelay);
-        };
+            this.scheduleUpdate(this.config.initialLoadDelay);
+        }
+
+        if (notification === 'SUSPENDING') {
+            this.started = false;
+            clearTimeout(this.updateTimer);
+        }
+
+        if (notification === 'RESUMING') {
+            this.started = true;
+            this.scheduleUpdate(this.config.initialLoadDelay);
+        }
+
     }
 
 });

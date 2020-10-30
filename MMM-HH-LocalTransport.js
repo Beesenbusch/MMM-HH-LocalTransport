@@ -43,7 +43,6 @@ Module.register("MMM-HH-LocalTransport",{
         this.trains = [];
         this.loaded = false;
         this.error = false;
-        this.updateTimer = null;
     },
 
     // Override dom generator.
@@ -152,6 +151,16 @@ Module.register("MMM-HH-LocalTransport",{
             this.error = true;
             this.updateDom(this.config.animationSpeed);
         }
+    },
+
+    suspend: function() {
+        console.log(this.name + " is suspended.")
+        this.sendSocketNotification('SUSPENDING');
+    },
+
+    resume: function() {
+        console.log(this.name + " is resumed.")
+        this.sendSocketNotification('RESUMING');
     }
 
 });
