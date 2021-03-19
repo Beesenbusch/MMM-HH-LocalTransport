@@ -117,24 +117,26 @@ module.exports = NodeHelper.create({
         var datetime = new Date(this.parseDate(data.time.date));
         datetime.setHours(hours);
         datetime.setMinutes(mins);
-        for (var i = 0, count = data.departures.length; i < count; i++) {
-            var trains = data.departures[i];
-            if (trains.timeOffset < 0) {
-                continue;
+        if (typeof data.departures !== "undefined") {
+            for (var i = 0, count = data.departures.length; i < count; i++) {
+                var trains = data.departures[i];
+                if (trains.timeOffset < 0) {
+                    continue;
+                }
+                var departureTime = datetime.setMinutes(datetime.getMinutes() + trains.timeOffset);
+                if (trains.delay != 0 && trains.delay != undefined) {
+                    delay = trains.delay;
+                } else {
+                    delay = null;
+                }
+                this.trains.push({
+                    departureTimestamp: trains.timeOffset,
+                    delay: delay,
+                    name: trains.line.name,
+                    id: trains.line.id,
+                    to: trains.line.direction
+                });
             }
-            var departureTime = datetime.setMinutes(datetime.getMinutes() + trains.timeOffset);
-            if (trains.delay != 0 && trains.delay != undefined) {
-                delay = trains.delay;
-            } else {
-                delay = null;
-            }
-            this.trains.push({
-                departureTimestamp: trains.timeOffset,
-                delay: delay,
-                name: trains.line.name,
-                id: trains.line.id,
-                to: trains.line.direction
-            });
         }
         this.loaded = true;
         this.sendSocketNotification("TRAINS", this.trains);

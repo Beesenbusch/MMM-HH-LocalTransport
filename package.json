@@ -1,6 +1,6 @@
 {
   "name": "MMM-HH-LocalTransport",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "Local transport in Hamburg module for MagicMirror",
   "repository": {
     "type": "git",
