@@ -110,7 +110,7 @@ Module.register("MMM-HH-LocalTransport",{
             // line name cell
             var divCellLine = document.createElement("div");
             var lineIcon = document.createElement("IMG");
-            lineIcon.src = "https://www.geofox.de/icon_service/line?height=" + this.config.iconSize + "&lineKey=" + trains.id;
+            lineIcon.src = "https://cloud.geofox.de/icon/line?height=" + this.config.iconSize + "&lineKey=" + trains.id;
             lineIcon.alt = trains.name;
             divCellLine.appendChild(lineIcon);
             divCellLine.className = "hvvline";
