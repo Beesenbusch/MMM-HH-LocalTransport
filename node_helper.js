@@ -79,6 +79,7 @@ module.exports = NodeHelper.create({
             "maxList": this.config.maximumEntries,
             "useRealtime": this.config.useRealtime,
             "maxTimeOffset": this.config.maxTimeOffset,
+            "serviceTypes": this.config.serviceTypes,
             "version": this.config.version,
         };
         self.getSignature(data).then((sig) => {
