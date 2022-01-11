@@ -28,6 +28,7 @@ npm install
                 id: '', // Trainstation ID
                 apiKey: '', // Add your apiKey
                 apiUser: '', // Add your apiUser
+                serviceTypes: ['ZUG', 'BUS', 'FAEHRE'] // Types of services that are displayed
                 maximumEntries: '10' // Max departures displayed
             }
         },
