@@ -28,7 +28,7 @@ npm install
                 id: '', // Trainstation ID
                 apiKey: '', // Add your apiKey
                 apiUser: '', // Add your apiUser
-                serviceTypes: ['ZUG', 'BUS', 'FAEHRE'] // Types of services that are displayed
+                serviceTypes: ['ZUG', 'BUS', 'FAEHRE'], // Limit the service types that you want to display. Available types can be viewed in the MMM-HH-LocalTransport.js
                 maximumEntries: '10' // Max departures displayed
             }
         },

@@ -28,8 +28,9 @@ Module.register("MMM-HH-LocalTransport",{
         apiUser: '',
         version: 38, // HVV API version
         id: "Master:9910910", // HH HBF
-        serviceTypes: ["ZUG", "BUS", "FAEHRE"], // service types that shoud be shown. Can be ["ZUG", "UBAHN", "SBAHN", "AKN", "RBAHN", "FERNBAHN",
-                                                // "BUS", "STADTBUS", "METROBUS", "SCHNELLBUS", "NACHTBUS", "XPRESSBUS", "AST", "FAEHRE"]
+        serviceTypes: ["ZUG", "BUS", "FAEHRE"], // Limit the service types that you want to display. Can be any of: "ZUG", "UBAHN", "SBAHN", "AKN", "RBAHN", "FERNBAHN", "BUS", "STADTBUS", "METROBUS", "SCHNELLBUS", "NACHTBUS", "XPRESSBUS", "AST", "FAEHRE"
+                                                // **Note**: "ZUG" includes all of the folowing: "UBAHN", "SBAHN", "AKN", "RBAHN" and "FERNBAHN"
+                                                // **Note**: "BUS" includes all of the following: "STADTBUS", "METROBUS", "SCHNELLBUS", "NACHTBUS", "XPRESSBUS" and "AST"
         iconSize: 18, // Icon size for HVV lines
     },
 
